@@ -204,10 +204,19 @@ while True:
     else:
         print("Predicted: Spam")
 
+    # Print the actual label
+    actual_label = input("Enter the actual label (0 for Ham, 1 for Spam): ")
+    if actual_label == str(result):
+        print("Correct Prediction!\n")
+    else:
+        print("Misclassification. Actual Label:", actual_label, "\n")
+
+
+print("\n-----------------------------------------------------------------\n")
 
 # 2nd Example usage with a loop
 while True:
-    user_input = input("\n\n| Naive Bayes Classifier Optimized |\nEnter a sentence to classify (enter 'x' to exit): ")
+    user_input = input("\n| Naive Bayes Classifier Optimized |\nEnter a sentence to classify (enter 'x' to exit): ")
 
     if user_input.lower() == 'x':
         break
@@ -219,6 +228,14 @@ while True:
     else:
         print("Predicted: Spam")
 
+    # Print the actual label
+    actual_label = input("Enter the actual label (0 for Ham, 1 for Spam): ")
+    if actual_label == str(result_optimized):
+        print("Correct Prediction!\n")
+    else:
+        print("Misclassification. Actual Label:", actual_label, "\n")
+
+print("\n-----------------------------------------------------------------\n")
 
 # 3rd Example usage with a loop
 while True:
@@ -234,6 +251,14 @@ while True:
     else:
         print("Predicted: Spam")
 
+    # Print the actual label
+    actual_label = input("Enter the actual label (0 for Ham, 1 for Spam): ")
+    if actual_label == str(result):
+        print("Correct Prediction!\n")
+    else:
+        print("Misclassification. Actual Label:", actual_label, "\n")
+
+print("-----------------------------------------------------------------\n")
 
 # 4th Example usage with a loop
 while True:
@@ -248,3 +273,10 @@ while True:
         print("Predicted: Ham")
     else:
         print("Predicted: Spam")
+
+    # Print the actual label
+    actual_label = input("Enter the actual label (0 for Ham, 1 for Spam): ")
+    if actual_label == str(result_optimized):
+        print("Correct Prediction!\n")
+    else:
+        print("Misclassification. Actual Label:", actual_label, "\n")
