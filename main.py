@@ -204,13 +204,6 @@ while True:
     else:
         print("Predicted: Spam")
 
-    # Print the actual label
-    actual_label = input("Enter the actual label (0 for Ham, 1 for Spam): ")
-    if actual_label == str(result):
-        print("Correct Prediction!\n")
-    else:
-        print("Misclassification. Actual Label:", actual_label, "\n")
-
 
 print("\n-----------------------------------------------------------------\n")
 
@@ -228,13 +221,6 @@ while True:
     else:
         print("Predicted: Spam")
 
-    # Print the actual label
-    actual_label = input("Enter the actual label (0 for Ham, 1 for Spam): ")
-    if actual_label == str(result_optimized):
-        print("Correct Prediction!\n")
-    else:
-        print("Misclassification. Actual Label:", actual_label, "\n")
-
 print("\n-----------------------------------------------------------------\n")
 
 # 3rd Example usage with a loop
@@ -251,13 +237,6 @@ while True:
     else:
         print("Predicted: Spam")
 
-    # Print the actual label
-    actual_label = input("Enter the actual label (0 for Ham, 1 for Spam): ")
-    if actual_label == str(result):
-        print("Correct Prediction!\n")
-    else:
-        print("Misclassification. Actual Label:", actual_label, "\n")
-
 print("-----------------------------------------------------------------\n")
 
 # 4th Example usage with a loop
@@ -273,10 +252,3 @@ while True:
         print("Predicted: Ham")
     else:
         print("Predicted: Spam")
-
-    # Print the actual label
-    actual_label = input("Enter the actual label (0 for Ham, 1 for Spam): ")
-    if actual_label == str(result_optimized):
-        print("Correct Prediction!\n")
-    else:
-        print("Misclassification. Actual Label:", actual_label, "\n")
