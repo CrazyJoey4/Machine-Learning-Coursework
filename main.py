@@ -1,11 +1,11 @@
 import pandas as pd
 import re
 import nltk
-from sklearn.model_selection import train_test_split, GridSearchCV
-from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
+import matplotlib.pyplot as plt
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
-from nltk.tokenize import word_tokenize
+from sklearn.model_selection import train_test_split, GridSearchCV
+from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.svm import SVC
 from sklearn.metrics import accuracy_score, classification_report
@@ -17,6 +17,39 @@ def load_data(file_path):
     df = df.rename(columns={"v1": "label", "v2": "text"})
     df['label'] = df['label'].map({'ham': 0, 'spam': 1})
     return df
+
+
+# Function to plot word frequency
+def plot_word_frequency_pie(text, title):
+    words = text.split()
+    word_freq = nltk.FreqDist(words)
+    plt.figure(figsize=(8, 8))
+    labels, sizes = zip(*word_freq.most_common(5))  # Display top 5 words
+    plt.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=140)
+    plt.title(title)
+    plt.show()
+
+# Function to visualize dataset status
+def visualize_dataset_status_pie(df):
+    # Pie chart for label distribution
+    plt.figure(figsize=(8, 8))
+    labels = 'Ham', 'Spam'
+    sizes = df['label'].value_counts().values
+    plt.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=140, colors=['#66b3ff', '#99ff99'])
+    plt.title('Distribution of Labels in the Dataset')
+    plt.show()
+
+    # Pie chart for word frequency in the entire dataset
+    all_text = ' '.join(df['text'])
+    plot_word_frequency_pie(all_text, 'Word Frequency in the Entire Dataset')
+
+    # Pie chart for word frequency in 'ham' messages
+    ham_text = ' '.join(df[df['label'] == 0]['text'])
+    plot_word_frequency_pie(ham_text, 'Word Frequency in "Ham" Messages')
+
+    # Pie chart for word frequency in 'spam' messages
+    spam_text = ' '.join(df[df['label'] == 1]['text'])
+    plot_word_frequency_pie(spam_text, 'Word Frequency in "Spam" Messages')
 
 
 def preprocess_text(text):
@@ -85,9 +118,12 @@ def optimize_svm(X_train_tfidf, y_train):
     return optimized_svm_classifier, best_C
 
 
-# Load and preprocess data
+# Load data
 df = load_data('spam.csv')
+
+# Preprocess data and Visualized
 df = preprocess_data(df)
+visualize_dataset_status_pie(df)
 
 # Split the dataset
 X_train, X_test, y_train, y_test = split_data(df)
